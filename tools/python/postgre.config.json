@@ -1,0 +1,14 @@
+{
+    "default": {
+        "host" : "hqd-ssdpostgis-04.mypna.com",
+        "database" : "UniDB_HERE_NA16Q2_1.0.0.455935-20160913171110-RC"
+    },
+    "turkey": {
+        "host" : "hqd-ssdpostgis-05.mypna.com",
+        "database" : "UniDB_HERE_EU16Q2_1.0.0.470618-20170211033734-RC-TURKEY"
+    },
+    "na": {
+        "host" : "hqd-ssdpostgis-04.mypna.com",
+        "database" : "UniDB_HERE_NA16Q2_1.0.0.455935-20160913171110-RC"
+    }
+}

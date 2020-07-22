@@ -1,0 +1,31 @@
+.guidanceTable{
+	border: none;
+	border-collapse: collapse;
+    font-size: 8pt;
+    background: white;
+}
+
+.guidanceTable tr:hover {
+    color: black;
+    background-color: grey;
+	}
+
+.guidanceTable tr:hover td {
+    background-color: grey;
+}
+
+
+.nav{
+	width: 250px;
+	padding: 0px;
+
+}
+
+.sidebar-pane #navigation{
+	padding:10px;
+}
+
+.jsonTurn{
+	margin-left: -30px;
+}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ETA</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+<script type="application/javascript">
+	function changeValue(id, value){
+		document.getElementById(id).innerHTML=value
+		document.getElementById('product').innerHTML="Denali Product 1"
+	}
+	function changeValueByRegion(id, value, product){
+		document.getElementById(id).innerHTML=value
+		document.getElementById('product').innerHTML=product
+	}
+	function lockTable(){
+		lockbtnValue = document.getElementById('lockbtn').innerHTML
+		
+		if(lockbtnValue != "lock"){
+			document.getElementById('lockbtn').innerHTML="lock"
+			document.getElementById('lockbtn').className="btn btn-danger btn-xs"
+		}else{
+			document.getElementById('lockbtn').innerHTML = "unlock"
+			document.getElementById('lockbtn').className="btn btn-primary btn-xs"
+		}
+			
+	}
+</script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-default navbar-static-top" role="navigation">
+						<div class="navbar-header">
+							 
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+							</button> <a class="navbar-brand" href="#">Telenav</a>
+						</div>
+						
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<div id="navbar" activeTab="etali"></div>
+						</div>
+						
+					</nav>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<p><a href="eta_cases/column.png"><img src="eta_cases/column.png" width="100%"/></a></p>
+					<p><img src="eta_cases/piechart.png" width="100%"/></p>
+				</div>
+				<div class="col-md-9">
+						<div class="tab-content">
+							<div class="tab-pane active" id="panel-na">
+														
+								<table class="table table-bordered">
+								<tr><th>ID</th><th>ETA</th><th>ETA Reference</th><th>ETA Diff</th>
+									<th><div class="view">
+											<div class="btn-group">
+												<button class="btn btn-default" contenteditable="true">Quality</button>
+												<button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+												<ul class="dropdown-menu" contenteditable="true">
+													<li><a href="#">|diff|<1%</a></li>
+													<li><a href="#">|diff|<5%</a></li>
+													<li  class="active"><a href="#">|diff|<10%</a></li>				
+												</ul>
+											</div>
+										</div>
+									</th><th>Distance(miles)</th><th>Region</th><th>Tags<span class="glyphicon glyphicon-tags" aria-hidden="true"></span></th></tr>
+								<tr><td><a href="eta_cases/1.json">1</a></td><td>25</td><td>14</td><td>4.17%</td>
+									<td><a href="http://ec2s-autodenali-ngxtile-na01.mypna.com/map/WebTool/route_viewer.html?&origin=50.97175,7.02947&destination=51.14128,7.19474&time=2016-10-3T22:56Z&avoid=hov,traffic&max_route_number=1&prefer_personal=false&user_id=ZOOD7AI10UD08P1Z84C23PA&server=eu_den18_dev,google">Good</a></td><td>24.33</td><td>EU</td><td><span class="label label-default">highway</span> <span class="label label-default">hov</span></td></tr>
+								<tr class="danger"><td><a href="eta_cases/2.json">2</a></td><td>13</td><td>11</td><td>18.18%</td>
+									<td><a href="http://ec2s-autodenali-ngxtile-na01.mypna.com/map/WebTool/route_viewer.html?&origin=51.078742,7.115775&destination=51.06647,7.12204&time=2016-10-3T22:56Z&avoid=hov,traffic&max_route_number=1&prefer_personal=false&user_id=ZOOD7AI10UD08P1Z84C23PA&server=eu_den18_dev,google">Bad</a></td><td>11.35</td><td>EU</td><td><span class="label label-default">unpaved</span> <span class="label label-default">rural</span></td></tr>
+								<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+								<tr><td>1200</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+								</table>
+							
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

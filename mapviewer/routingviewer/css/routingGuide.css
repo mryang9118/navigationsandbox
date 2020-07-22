@@ -1,0 +1,203 @@
+
+ /*
+.DESTINATION_AHEAD_SCOUT,
+.DESTINATION_LEFT_SCOUT,
+.DESTINATION_RIGHT_SCOUT,
+.H2H_EXIT_LEFT_SCOUT,
+.H2H_EXIT_RIGHT_SCOUT,
+.H2H_MERGE_AHEAD_SCOUT,
+.H2H_MERGE_LEFT_SCOUT,
+.H2H_MERGE_RIGHT_SCOUT,
+.H2R_EXIT_LEFT_SCOUT,
+.H2R_EXIT_RIGHT_SCOUT,
+.L2L_BEAR_LEFT_SCOUT,
+.L2L_BEAR_RIGHT_SCOUT,
+.L2L_CONTINUE_SCOUT,
+.L2L_TURN_HARD_LEFT_SCOUT,
+.L2L_TURN_HARD_RIGHT_SCOUT,
+.L2L_TURN_LEFT_SCOUT,
+.L2L_TURN_RIGHT_SCOUT,
+.L2L_TURN_SLIGHT_LEFT_SCOUT,
+.L2L_TURN_SLIGHT_RIGHT_SCOUT,
+.L2L_U_TURN_SCOUT,
+.LEFT_SCOUT,
+.R2H_ENTER_LEFT_SCOUT,
+.R2H_ENTER_RIGHT_SCOUT,
+.RIGHT_SCOUT,
+.ROUNDABOUT_ENTER_SCOUT,
+.ROUNDABOUT_EXIT_SCOUT,
+.START_SCOUT,
+.STAY_LEFT_SCOUT,
+*/
+
+.spriteTurn {
+        background: url(guidanceCombine.png) no-repeat;
+        display: block;
+        width:7.714em;
+        height:7.714em; 
+        background-size: 5.857em 247.286em;
+        font-size: 4px;  
+        font-family: sans-serif;  
+
+
+        
+ }
+
+ /* Overwriting .leaflet-div-icon class border*/
+ .leaflet-div-icon {
+        border:0px;
+        }
+
+.START_SCOUT {
+                background-position: 0px -278.564em;
+}
+ 
+
+
+.ROUTE_SUMMARY_CURRENT_LEFT {
+                background-repeat: no-repeat;           
+                
+}
+
+ 
+#turnTypeImg
+{
+                width:10.714em;
+                height:10.714em;                             
+}
+
+ 
+.DESTINATION_AHEAD_SCOUT {
+                background-position: 0px 0em;
+                 
+}
+ 
+.DESTINATION_LEFT_SCOUT {
+                background-position: 0px -7.428em;
+                 
+}
+ 
+.DESTINATION_RIGHT_SCOUT {
+                background-position: 0px -15.142em;
+                
+}
+ 
+.H2H_EXIT_LEFT_SCOUT {
+                background-position: 0px -42.856em;
+}
+ 
+.H2H_EXIT_RIGHT_SCOUT {
+                background-position: 0px -53.57em;
+}
+ 
+.H2H_MERGE_AHEAD_SCOUT {
+                background-position: 0px -20em;
+}
+ 
+.H2H_MERGE_LEFT_SCOUT {
+                background-position: 0px -64.284em;
+}
+ 
+.H2H_MERGE_RIGHT_SCOUT {
+                background-position: 0px -74.998em;
+                
+}
+ 
+.H2R_EXIT_LEFT_SCOUT {
+                background-position: -2px -74.712em;
+}
+ 
+.H2R_EXIT_RIGHT_SCOUT {
+                background-position: 0px -67.426em;
+                 
+}
+
+.STAY_RIGHT_SCOUT{
+                 background-position: 0px -82.426em;
+                
+
+}
+
+.STAY_LEFT_SCOUT{
+                background-position: 0px -74.426em;
+                 
+}
+ 
+.L2L_BEAR_LEFT_SCOUT {
+                background-position: 0px -107.14em;
+}
+ 
+.L2L_BEAR_RIGHT_SCOUT {
+                background-position: 0px -117.854em;
+}
+ 
+.L2L_CONTINUE_SCOUT {
+                background-position: 0px -37.568em;
+              
+}
+}
+ 
+.L2L_TURN_HARD_LEFT_SCOUT {
+                background-position: 0px -96.282em;
+}
+ 
+.L2L_TURN_HARD_RIGHT_SCOUT {
+                background-position: 0px -104.996em;
+}
+ /*-----TURN LEFT ---*/
+.L2L_TURN_LEFT_SCOUT {
+                background-position: 0px -149.71em;
+                
+}
+
+/*-----TURN RIGHT ---*/
+.L2L_TURN_RIGHT_SCOUT {
+                background-position: 0px -171.424em;
+            
+}
+
+ 
+.L2L_TURN_SLIGHT_LEFT_SCOUT {
+                background-position: 0px -127.138em;
+                
+}
+ 
+.L2L_TURN_SLIGHT_RIGHT_SCOUT {
+                background-position: 0px -134.852em;
+                
+}
+
+
+/*-----LEFT U TURN ---*/ 
+.L2L_U_TURN_SCOUT {
+                background-position: 0px -141.566em;
+                
+}
+ 
+.LEFT_SCOUT {
+                background-position: 0px -214.28em;
+}
+ 
+.R2H_ENTER_LEFT_SCOUT {
+                background-position: 0px -224.994em;
+}
+ 
+.R2H_ENTER_RIGHT_SCOUT {
+                background-position: 0px -235.708em;
+}
+ 
+.RIGHT_SCOUT {
+                background-position: 0px -246.422em;
+}
+ 
+.ROUNDABOUT_ENTER_SCOUT {
+                background-position: 0px -179.136em;
+}
+ 
+.ROUNDABOUT_EXIT_SCOUT {
+                background-position: 0px -267.85em;
+}
+
+
+ 
+ 

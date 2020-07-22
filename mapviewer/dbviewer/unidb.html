@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Unidb</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+	<link rel="stylesheet" href="http://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+<script type="application/javascript">
+	function changeValue(id, value){
+		document.getElementById(id).innerHTML=value
+		document.getElementById('product').innerHTML="Denali Product 1"
+	}
+	function changeValueByRegion(id, value, product){
+		document.getElementById(id).innerHTML=value
+		document.getElementById('product').innerHTML=product
+	}
+	function lockTable(){
+		lockbtnValue = document.getElementById('lockbtn').innerHTML
+		
+		if(lockbtnValue != "lock"){
+			document.getElementById('lockbtn').innerHTML="lock"
+			document.getElementById('lockbtn').className="btn btn-danger btn-xs"
+		}else{
+			document.getElementById('lockbtn').innerHTML = "unlock"
+			document.getElementById('lockbtn').className="btn btn-primary btn-xs"
+		}
+			
+	}
+</script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-default navbar-static-top" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+							</button> <a class="navbar-brand" href="#">Telenav</a>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<div id="navbar" activeTab="dbli"></div>
+							<form class="navbar-form navbar-left navbar-input-group" role="search">
+							<div class="form-group">
+								<input id="distance_endpoints" class="form-control" style="width:330px"  value="33.818650,-118.220670,33.779900,-118.201720" type="text">
+							</div> 
+							<button id="distance" type="button" class="btn btn-default">
+								Distance
+							</button>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="http://unidb.telenav.com/" target="_blank">DBViewer</a>
+							</li>
+							<li>
+
+							</li>
+						</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<div class="row">
+				<div id="navbar" class="col-md-4">
+					<div class="row" id="trafficPane" style="margin:0"></div>
+					<div class="view">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#" data-toggle="tab" region="NA">NA</a></li>
+							<li><a href="#" data-toggle="tab" region="EU">EU</a></li>
+							<li><a href="#" data-toggle="tab" region="SA">SA</a></li>
+							<li><a href="#" data-toggle="tab" region="ANZ">ANZ</a></li>
+							<li><a href="#" data-toggle="tab" region="MEA">MEA</a></li>
+							<li><a href="#" data-toggle="tab" region="SEA">SEA</a></li>
+							
+							
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">More
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								  <li><a href="#" data-toggle="tab" region="TUR">TUR</a></li>
+								  <li><a href="#" data-toggle="tab" region="TWN">TWN</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="list-group" id="db_nav"></div>
+				</div>
+				<div id="db_panel" class="col-md-8">
+					<div class="row">
+					<form class="navbar-form navbar-left" role="search">
+						<div class="row">
+						<label style="width:70px">Data Base</label>
+						<input id="dbhost" type="text" placeholder="DB Host">
+						<input id="dbname" type="text" placeholder="Data Base">
+						<input id="region" type="text" placeholder="Region(option)" size="6">
+						<a class="btn btn-success btn-xs" target="_blank" onclick="openStats()">Stats</a>
+						<input id="auto_select_road" type="checkbox" checked="checked"> Auto select road
+						<input id="auto_clean" type="checkbox" checked="checked"> Auto clean Markers
+						</div>
+						<div class="row" style="margin-top:5px">
+					 	<label style="width:70px">Condition</label>
+						<input id="wayid" type="text" placeholder="wayid or lat,lng">
+						<input id="tags" type="text" placeholder="tags">
+						<input id="tmcid" type="text" placeholder="tmc C24.*06135">
+						<input id="adminId" type="text" placeholder="admin(L1) Id">
+					  	<button type="button" class="btn btn-default btn-xs" onclick="doSearch()">Query</button>
+						<a  class="btn btn-default btn-xs" href="/data_archive/data_repo/SPEC/webhelp-responsive/">UnidB SPEC</a>
+						</div>
+					</form>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 right full-height" style="margin-top:1px;padding-left:0px" id="query_out"></div>
+						<div class="col-sm-8 right full-height">
+							<div id="map-container" class="full-height" style="width: 100%; height: 600px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/tags.js"></script>
+    <script src="js/unidb.js"></script>
+	<script src="js/map.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script src='http://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+  </body>
+</html>

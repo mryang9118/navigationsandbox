@@ -1,0 +1,13 @@
+{
+    "default" : "denali_na_my18_stage",
+    "denali_na_my18_stage" : {
+        "mapservice_base_url" : "http://denalistage.telenav.com/maps/my18_na/directions",
+        "api_key" : "c596e95b-a655-4b7b-b346-208888d85a33",
+        "api_secret" : "0c96fff5-d764-4703-84fb-67980adf2893"
+    },
+    "denali_eu_my18_stage" : {
+        "mapservice_base_url" : "http://denalistage.telenav.com/maps/my18_eu/directions",
+        "api_key" : "WDz0QzprPMKPU1f3JdPeDAzC_eoa",
+        "api_secret" : "huzjBVEFXZPE41IyHwUpZGtaQbUa"
+    }
+}

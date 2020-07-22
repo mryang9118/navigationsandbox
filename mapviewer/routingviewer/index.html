@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NGT</title>
+  
+    <!-- JQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+
+    <!-- Time Picker Plugin-->
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.min.css"/>
+    <script src="scripts/jquery-ui-timepicker-addon.min.js"></script>
+
+    <!-- Font Awesome CDN -->
+    <script src="https://use.fontawesome.com/a2383e368d.js"></script>
+
+    <!-- Leaflet CDN -->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+
+    <!-- Google Map API CDN-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&libraries=geometry" async defer></script>
+
+    <!-- Baidu Map API -->
+    
+    <script type="text/javascript" src="scripts/baiduMapAPI-2.0-min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap2-toggle.min.js"></script>
+    <!-- <script type="text/javascript"  src="scripts/bootstrap-multiselect.js"></script> -->
+    <script type="text/javascript" src="scripts/jqtree.js"></script>
+    <script type="text/javascript" src="scripts/jjsonviewer.js"></script>
+    <script type="text/javascript" src="scripts/jquery.jsonbrowser.js"></script>
+    <script type="text/javascript"  src="scripts/moment.js"></script>
+    <script type="text/javascript"  src="scripts/moment-timezone.js"></script>
+     
+     
+    <!-- Leaflet Plugin -->
+    <link rel="stylesheet" type="text/css" href="css/selectize.css">
+    <link rel="stylesheet" type="text/css" href="css/Leaflet.ContextMenu.css">
+    <link rel="stylesheet" type="text/css" href="css/leaflet-routing-machine.css">
+    <link rel="stylesheet" type="text/css" href="css/Leaflet.Sidebar.css">
+    <link rel="stylesheet" type="text/css" href="css/Control.Geocoder.css">
+    <link rel="stylesheet" type="text/css" href="css/routingGuide.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap2-toggle.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-multiselect.css"> -->
+     <link rel="stylesheet" type="text/css" href="css/jqtree.css">
+     <link rel="stylesheet" href="css/jjsonviewer.css">
+     <link rel="stylesheet" type="text/css" href="css/jquery.jsonbrowser.css">
+    <link rel="stylesheet" type="text/css" href="css/guidanceTable.css">
+    <script type="text/javascript"  src="scripts/FileSaver.js"></script>
+    <script type="text/javascript"  src="scripts/selectize.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.Baidu.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.GoogleMutant.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.CountrySelect.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.ContextMenu.js"></script>
+    <script type="text/javascript" src="scripts/leaflet-routing-machine.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.Sidebar.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.TilelayerHere.js"></script>
+    <script type="text/javascript" src="scripts/Leaflet.RotatedMarker.js"></script>
+    <script type="text/javascript" src="scripts/Control.Geocoder.js"></script>
+   
+    
+</head>
+<body>
+<div id="sidebar-left" class="sidebar">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+        <ul role="tablist">
+            <li class='active'><a href="#navigation" role="tab"><i class="fa fa-map"></i></a></li>
+            <li><a href="#profile" role="tab"><i class="fa fa-file"></i></a></li>
+            <li><a href="#analytics" role="tab"><i class="fa fa-bar-chart-o"></i></a></li>
+            <!--<li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>-->
+        </ul>
+        <ul role="tablist">
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+    </div>
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+        <div class="sidebar-pane active" id="navigation">
+            <div class="sidebar-header">
+                Navigation
+                <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </div>
+            <div class="sidebar-body">
+             <br>
+                <div id="location" style="width: 245px">
+                    <input class="location-input" id="origin-input" type="text" 
+                    value="37.398009,-121.977486"
+                    placeholder="37.386945,-122.00555,-883742270|21562204|52019091">
+					<button id="reverse-od" onclick="reverseOD()" class="fa fa-arrows-v fa-x"></button>
+                    <div id="waypoint">
+                   
+                    </div>  
+                    <input class="location-input" id="destination-input" type="text" 
+                           value="37.386945,-122.00555"
+                            placeholder="37.386945,-122.00555"> 
+                     <button id="add-waypoint" class="fa fa-plus fa-x"></button>
+                     <label class="fa fa-upload fa-x"> Load Profile
+                     <input type="file" id="loadProfile" style="display: none" />
+                     </label>
+                </div>
+
+                <hr>
+                <div class="tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#options">Options</a></li>
+                        <li><a data-toggle="tab" href="#params">Info</a></li>
+                        <li><a data-toggle="tab" href="#adv">Advanced</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                    <div id="options" class="tab-pane fade in active">            
+                         <div id="options-menu">
+
+                      
+                        <!--<tr><td>
+                        <div class="options-selector" id="api-version">
+                            <span>API Version:&nbsp;</span>
+                            <select id="api-version-selector">
+                                <option value="V4">V4</option>
+                                <option value="V5">V5</option>
+                            </select>
+                        </div>
+                        </td></tr>
+                        -->
+                       
+                        <div class="options-selector" id="max-route-number">
+                            <span>Max Routes:&nbsp;</span>
+                            <select id="max-route-number-selector">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                       
+                        <div class="options-selector" id="live-traffic">
+                            <span>Traffic type:&nbsp;</span>
+                            <select id="traffic-selector">
+                                <option value="1">none</option>
+                                <option value="2" selected>live traffic</option>
+                                <option value="3">historical traffic</option>
+                            </select>
+                        </div>
+                       
+                        <div id="divUtcTime" style="display:show"> UTC Time: <input type="text" id="timeUTC"  style="width: 140px" placeholder="2015-12-22 06:46" disabled> </div>
+                       
+                       <div id="divOriginTime" style="display:show"> Origin Time: <input type="text" id="timeOrigin"  style="width: 140px" placeholder="2015-12-22 06:46" disabled> </div>
+                        <table>
+                        <tr>
+                               <td> <select id="mode" data-placeholder="select mode" class="multiselect"  multiple="multiple" >                       
+                                    <option value="fastest" selected>fastest</option>
+                                    <option value="shortest">shortest</option>
+                                    <option value="eco">eco</option>
+                                    <option value="pedestrain">pedestrain</option>
+                                </select>
+                                </td></tr>
+                       
+                          <tr>
+                            <td><div class="options-selector" > 
+                          <select id="avoid" data-placeholder="choose value(s) to avoid" class="multiselect"  multiple="multiple">                       
+                                    <option value="hov">hov</option>
+                                    <option value="traffic" selected>traffic</option>
+                                    <option value="unpaved">unpaved</option>
+                                    <option value="tolls">tolls</option>
+                                    <option value="highway">highway</option>
+                                    <option value="ferries">ferries</option>
+                                    <option value="countryborder">countryborder</option>
+                                    <option value="caltrain">caltrain</option>
+                                    <option value="tunnel">tunnel</option>
+                                </select>
+                        </div></td></tr>
+                       
+                          <tr>
+                            <td><div id="ecoCurve" data-placeholder="Select Eco Curve Id" style="display: none">eco_curve_id:
+                                <select id="eco_curve_id">  <!--Call run() function-->
+                                    <option selected value=""></option>
+                                    <option value="1">denali18_tn_default</option>
+                                    <option value="2">denali18_tn_g1</option>
+                                    <option value="3">denali18_tn_g2</option>
+                                    <option value="4">denali18_tn_g3</option>
+                                </select>
+                        </div>
+                        </td></tr>
+                     
+                            <tr>
+                            <td><div id="serverSelect"> 
+                            <select id="server" data-placeholder="-- select any server -- " class="multiselect"  multiple="multiple">
+								<option value="ec2d-routinggen3osmna-01.mypna.com:8080" label="osm_ngx">osm_ngx
+                                <option value="ec2d-denalirmu-02.mypna.com:8080" label="na_den17_dev">na_den17_dev
+                                <option value="ec2s-ngxrouting-01.stg.mypna.com:8080" label="na_den17_stage" selected>na_den17_stage
+                                <option value="ec2s-ngxrouting-02.stg.mypna.com:8080" label="na_den17_stage_2">na_den17_stage_2
+                                <option value="ec2s-ngxrouting-03.stg.mypna.com:8080" label="na_den17_stage_3">na_den17_stage_3
+
+                                <option value="ec1-ngxrouting-02.ec1.mypna.com:8080" label="na_den17_prod">na_den17_prod
+                                <option value="ec1-ngxrouting-01.ec1.mypna.com:8080" label="na_den17_prod_2">na_den17_prod_2
+                                <option value="ec1-ngxroutingbeta-01.ec1.mypna.com:8080" label="na_den17_prod_beta">na_den17_prod_beta
+
+                                <option value="ec2d-ngxmy18routing-na-01.mypna.com:8080" label="na_den18_dev">na_den18_dev
+                                <option value="ec2s-ngxmy18routing-na-01.stg.mypna.com:8080" label="na_den18_stage" >na_den18_stage
+                                <option value="ec1-my18routing-na-01.ec1.mypna.com:8080" label="na_den18_prod">na_den18_prod
+                                <option value="ec1-my18routing-na-02.ec1.mypna.com:8080" label="na_den18_prod_2">na_den18_prod_2
+                                <option value="ec2d-ngxmy18routing-na-01.mypna.com:8081" label="osm_ngx_na">osm_ngx_na
+
+                                <option value="ec1d-routinggen3na-01.mypna.com:8080" label="na_gen3">na_gen3
+                                <option value="ec1d-routinggen3eu-01.mypna.com:8080" label="eu_gen3">eu_gen3
+                                <option value="ec2d-ngxmy18routing-eu-01.mypna.com:8080" label="eu_den18_dev">eu_den18_dev
+                                <option value="ec2s-ngxmy18routing-eu-01.stg.mypna.com:8080" label="eu_den18_stage">eu_den18_stage
+                                <option value="ec1-my18routing-eu-01.ec1.mypna.com:8080" label="eu_den18_prod">eu_den18_prod
+                                <option value="ec1-my18routing-eu-02.ec1.mypna.com:8080" label="eu_den18_prod_2">eu_den18_prod_2
+
+                                <option value="ec1d-routinggen3sa-01.mypna.com:8080" label="sa_gen3">sa_gen3
+                                <option value="ec1d-routinggen3anz-01.mypna.com:8080" label="anz_gen3">anz_gen3
+                                <option value="shd-autodenalicnrmu-01.telenav.cn:8080" label="cn_yangzi">cn_yangzi
+                                <option value="shd-autodenalicnrmu-01.telenav.cn:8080" label="cn_den18_dev">cn_den18_dev
+                                <option value="alish2s-autodenalicnrmu-01.mypna.cn:8080" label="cn_den18_stage">cn_den18_stage
+                                <option value="alish1-rmu-01.prod.mypna.cn:8080" label="cn_den18_prod_1">cn_den18_prod_1
+                                <option value="alish2-rmu-01.prod.mypna.cn:8080" label="cn_den18_prod_2">cn_den18_prod_2
+                                <option value="shd-autodenalicnrmu-01.telenav.cn:8081" label="cn_gen3">cn_gen3
+
+                                <option value="ec5d-my18routing-kr-01.dev.mypna.com:8080" label="kr_den19_dev">kr_den19_dev
+                                <option value="ec5s-my18routing-kr-01.stg.mypna.com:8080" label="kr_den19_stage">kr_den19_stage
+                                <option value="ec5-my18routing-kr-01.prod.mypna.com:8080" label="kr_den19_prod">kr_den19_prod
+
+                                <option value="ec2d-ngxmy18routing-turkey-01.mypna.com:8080" label="turkey_den18_dev">turkey_den18_dev
+                                <option value="ec2s-ngxmy18routing-turkey-01.stg.mypna.com:8080" label="turkey_den18_stage">turkey_den18_stage
+                                <option value="ec1-my18routing-turkey-01.ec1.mypna.com:8080" label="turkey_den18_prod">turkey_den18_prod
+                                <option value="ec1-my18routing-turkey-02.ec1.mypna.com:8080" label="turkey_den18_prod_2">turkey_den18_prod_2
+
+                                <option value="http://hqd-osmnarouting-01.mypna.com:8080/routing/v4/route/json" label="more">more
+                                <option value="hqs-fprmu-02:8080" label="rmu_stage">rmu_stage
+                                <option value="ec2d-rmu-01.mypna.com:8080" label="rmu_dev">rmu_dev
+                                <option value="hqd-fprmu-02.mypna.com:8080" label="rmu_dev_1">rmu_dev_1
+                                <option value="ec2s-autodenalirmu-01.mypna.com:8080" label="rmu_nt">rmu_nt
+                                <option value="ec2s-autodenalirmu-01.mypna.com:8080" label="rmu_stage_nt">rmu_stage_nt
+
+                                <option value="ec2d-denalirmu-01.mypna.com:8080" label="rmu_dev_nt">rmu_dev_nt
+                                <option value="autodenali-directionservice-na.mypna.com:8080" label="rmu_prod_nt">rmu_prod_nt
+
+                                <option value="ec1-autodenaliroutingna-03.ec1.mypna.com:8080" label="rmu_dp2_na_prod_nt_1">rmu_dp2_na_prod_nt_1
+                                <option value="ec1-autodenaliroutingna-04.ec1.mypna.com:8080" label="rmu_dp2_na_prod_nt_2">rmu_dp2_na_prod_nt_2
+                                <option value="ec1-autodenaliroutingeu-01.ec1.mypna.com:8080" label="rmu_dp2_eu_prod_nt_1">rmu_dp2_eu_prod_nt_1
+
+                                <option value="ec1-rmurouting-01.ec1.mypna.com:8080" label="rmu_prod_1">rmu_prod_1
+                                <option value="ec1-rmurouting-02.ec1.mypna.com:8080" label="rmu_prod_2">rmu_prod_2
+                                <option value="ec1-rmurouting-03.ec1.mypna.com:8080" label="rmu_prod_3">rmu_prod_3
+                                <option value="ec2-rmurouting-01.ec2.mypna.com:8080" label="rmu_prod_4">rmu_prod_4
+                                <option value="ec2-rmurouting-02.ec2.mypna.com:8080" label="rmu_prod_5">rmu_prod_5
+                                <option value="ec2s-waikikirmu-01.stg.mypna.com:8080" label="waikikirmu_stage">waikikirmu_stage
+                                <option value="ec1-waikikirmu-01.ec1.mypna.com:8080" label="waikikirmu_prod_1">waikikirmu_prod_1
+                                <option value="ec2-waikikirmu-01.ec2.mypna.com:8080" label="waikikirmu_prod_2">waikikirmu_prod_2
+                                <option value="ec2d-toyotaosmmapdata-01.dev.mypna.com:8080" label="can_lahainarmu_dev">can_lahainarmu_dev
+                                <option value="ec2s-rmurouting-canada-01.stg.mypna.com:8080" label="can_lahainarmu_stage_1">can_lahainarmu_stage_1
+                                <option value="ec2-rmurouting-canada-01.ec2.mypna.com:8080" label="can_lahainarmu_prod_1">can_lahainarmu_prod_1
+
+                                <option value="ec2d-autodenalimapsvc-01.mypna.com:8080" label="denalimapsvc_dev">denalimapsvc_dev
+                                <option value="ec2s-autodenalimapsvc-01.mypna.com:8080" label="denalimapsvc_stage">denalimapsvc_stage
+                                <option value="ec1-autodenalimapsvc-01.ec1.mypna.com:8080" label="denalimapsvc_prod_1">denalimapsvc_prod_1
+                                <option value="ec1-autodenalimapsvc-02.ec1.mypna.com:8080" label="denalimapsvc_prod_2">denalimapsvc_prod_2
+                                <option value="autodenali-mapsvc.mypna.com:8080" label="denalimapsvc_lb">denalimapsvc_lb
+                                <option value="google" label="google" >google
+                            </select>
+                        </div></td></tr>
+                     </table>   
+                        <div class="options-selector" id="heading">Heading:
+                            <input class="content_active" type="number" id="heading-input" min="0" max="359"
+                                   placeholder="heading: [0,359]">
+                        </div>
+                       
+                        <div class="options-selector" id="speed-in-mps">Speed:
+                            <input class="content_active" type="number" id="speed-in-mps-input" min="0" max="50"
+                                   placeholder="speed_in_mps: [0,50]">
+                        </div>
+                     
+                        <div class="options-selector" id="dest-house-number"> Destination HNo:
+                            <input class="content_active" type="text" id="dest-house-number-input" style="width:120px"
+                                   placeholder="house number">
+                        </div>
+                       
+                        <div class="options-selector" id="dest-street-name"> Destination St.:
+                            <input class="content_active" type="text" id="dest-street-name-input"
+                                   placeholder="street name">
+                        </div>
+                        
+                        Summary:<div>
+                            <b style="color: #00bfff" id="googleSummary"></b>
+                            <output id="google_summary" style="color: #00bfff;font-size:12px"></output>
+                            <output id="guidancetbodySummary" style="font-size:12px"></output>
+                        </div>                   
+                        </div>
+                    </div>
+                    <div id="params" class="tab-pane fade">
+                      <!--  <div id="jsonTurn" class="jsonTurn"> -->
+                      <a href="#" id="collapse-all">Collapse</a>
+                      <a href="#" id="expand-all">Expand</a>
+                         <input type="text" id="search" placeholder="Search ...">
+                        <div id="browser" class="jsonbrowser">
+                        </div>
+                    </div>
+                    
+                    <div id="adv" class="tab-pane fade">
+                    </div>
+                
+                    </div>
+                </div>
+
+                <hr>
+                    <div>
+                    <input type="submit" id="submitForm" class="btn btn-default btn-sm" onclick="submitForm()">
+                     <input type="button" id="saveProfile" value="Save Profile" class="btn btn-default btn-sm" onclick="saveProfile()">
+                    
+                    </div>
+                </div>
+            </div>
+       
+
+        <div class="sidebar-pane" id="profile">
+            <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <input type="file" onchange="loadFile()">
+        </div>
+        <div class="sidebar-pane" id="analytics">
+            <div class="sidebar-header">
+                Analytics
+                <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </div>
+            OD Pairs:
+            <div class="sidebar-body">
+            <div id="input-loadUrl">
+             <input class="content_active" type="text" id="loadUrl" style="width:120px"
+                                   placeholder="Enter url">
+            </div>
+                <div id="pairs">
+              
+             </div>
+            
+             <output id="pairSummary" style="visibility: hidden"></output>
+              <output id="pairSummaryGoogle" style="color: #00bfff;visibility: hidden"></output>
+
+            <hr>
+
+            </div>
+        </div>
+        <div class="sidebar-pane" id="settings">
+            <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-up"></i></span></h1>
+        </div>
+    </div>
+</div>
+
+<div id="map"></div>
+ <div id="sidebar-right" class="sidebar collapsed rightCollapse" >
+    <div class="sidebar-tabs" style="height:40px" id="sidebarRightTab">
+        <ul id="sidebar-ul" role="tablist">
+            <li id="roadIcon" class="active"><a href="#guidance" role="tab"><i class="fa fa-road"></i></a></li>
+        </ul>
+    </div>
+
+      <div class="sidebar-content" >
+        <div class="sidebar-pane" id="guidance" >
+            <div class="sidebar-header" >
+                Guidance
+                <span class="sidebar-close"><i class="fa fa-caret-right"></i></span>
+
+               
+            </div>
+            <div class="sidebar-body">
+          
+             <table class="guidanceTable" id="guidance-route">
+                    <tbody id="guidancetbody1F" ></tbody>
+                    <tbody id="guidancetbody2F" style="display: none"></tbody>
+                    <tbody id="guidancetbody3F" style="display: none"></tbody>
+                    <tbody id="guidancetbody1S" style="display: none"></tbody>
+                    <tbody id="guidancetbody2S" style="display: none"></tbody>
+                    <tbody id="guidancetbody3S" style="display: none"></tbody>
+                    <tbody id="guidancetbody1E" style="display: none"></tbody>
+                    <tbody id="guidancetbody2E" style="display: none"></tbody>
+                    <tbody id="guidancetbody3E" style="display: none"></tbody>
+                    <tbody id="guidancetbody1P" style="display: none"></tbody>
+                    <tbody id="guidancetbody2P" style="display: none"></tbody>
+                    <tbody id="guidancetbody3P" style="display: none"></tbody>
+
+
+                </table>     
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="css/navTool.css">
+ <script type="text/javascript" src="scripts/navTool.js"></script>
+</body>
+</html>
